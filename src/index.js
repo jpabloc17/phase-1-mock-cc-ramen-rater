@@ -51,3 +51,25 @@ function createNewRamen(ramen) {
     form.reset();
   });
 }
+
+function updateFeaturedRamen() {
+  const form = document.getElementById("edit-ramen");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const img =
+      document.querySelector("img.detail-image").attributes[1].nodeValue;
+    const ramenName = document.querySelector("h2.name").textContent;
+    const restaurantName = document.querySelector("h3.restaurant").textContent;
+    const formData = {
+      name: ramenName,
+      restaurant: restaurantName,
+      image: img,
+      rating: event.target.rating.value,
+      comment: event.target["new-comment"].value,
+    };
+    displayImage(formData);
+    form.reset();
+  });
+}
+
+updateFeaturedRamen();
